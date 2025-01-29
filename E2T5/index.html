@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">
+                    <p>Hasiera</p>
+                </a>
+            </li>
+            <li>
+                <a href="../html/gu.html">
+                    <p>Gu</p>
+                </a>
+            </li>
+            <li>
+                <a href="../html/laguntza.html">
+                    <p>Laguntza</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <div class="form-container">
+            <img src="img/errekamari_logoa.png" alt="logo" class="logo">
+            <form action="php/menua.php" method="POST">
+                <input type="text" placeholder="Erabiltzailea" id="erabiltzailea" name="erabiltzailea" required>
+                <input type="password" placeholder="Pasahitza" id="pasahitza" name="pasahitza" required>
+                <div class="LoginBotoiak">
+                    <button class="saioaHasiBotoia" type="submit">Saioa Hasi</button>
+                </div>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2025 Errekamari Bidaiak. Eskubide guztiak erreserbatuta.</p>
+        <p>
+            <a href="#">Política de privacidad</a> |
+            <a href="#">Términos de servicio</a> |
+        </p>
+    </footer>
+</body>
+</html>
