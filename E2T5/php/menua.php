@@ -1,37 +1,64 @@
 <?php
 session_start();
 require 'conexion.php';
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">
+                    <p>Hasiera</p>
+                </a>
+            </li>
+            <li>
+                <a href="../E2T5/html/gu.html">
+                    <p>Gu</p>
+                </a>
+            </li>
+            <li>
+                <a href="../E2T5/html/laguntza.html">
+                    <p>Laguntza</p>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
+<?php
+
 
 $nombre = htmlspecialchars(trim($_POST['erabiltzailea']));
 $pasahitza = htmlspecialchars(trim($_POST['pasahitza']));
 
-$sql = "SELECT Erabiltzaile, Pasahitza FROM agentzia WHERE Erabiltzaile = ?";
-$stmt = $conn->prepare($sql);
-$stmt->bind_param("s", $nombre);
-$stmt->execute();
-$result = $stmt->get_result();
+$sql = "SELECT Erabiltzaile, Pasahitza FROM agentzia WHERE Erabiltzaile = '$nombre' and pasahitza ='$pasahitza'";
+$result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
 
-    if ((string)$pasahitza === (string)$user['Pasahitza']) {
-        session_regenerate_id(true);
-        $_SESSION['Izena'] = $user['Izena'];
-        $_SESSION['Logoa'] = $user['Logoa'];
+   
         header("Location: ../html/menu_nagusia.html");
         exit();
-    } else {
-        echo "<script>
-            alert('Pasahitza okerra da. Saiatu berriro.');
-            window.location.href = '../index.html';
-        </script>";
-    }         
+       
 } else {
     echo "<script>
-        alert('Erabiltzailearen izena ez da existitzen.');
-        window.location.href = '../index.html';
+    setTimeout(() => { 
+            alert('Erabiltzailearen izena edo pasahitza ez dira existitzen.');
+            window.location.href = '../index.html';
+            }, 50);        
+        
     </script>";
 }
 
 $conn->close();
 ?>
+
