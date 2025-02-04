@@ -9,11 +9,9 @@ body {
   font-family:'Times New Roman', Times, serif;
   margin: 0;
   padding: 0;
-  display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
-  padding-top: 60px;
+  height: 100%;
+  width:100% ;
 }
 
 nav {
@@ -77,11 +75,12 @@ form {
 }
 
 input[type="text"],
-input[type="password"] {
-  padding: 10px;
+input[type="password"], input[type="date"], input[type="number"], select{
   margin: 10px 0;
   border-radius: 4px;
-}
+}  
+
+
 
 input[type="submit"] {
   background-color: rgb(74, 132, 249);
@@ -90,9 +89,9 @@ input[type="submit"] {
   border-color: blue;
 }
 
-input[type="radio"] {
+#zerbitzuRadio div{
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
 button {
@@ -114,15 +113,21 @@ button:hover {
   flex-direction: column;
 }
 
-footer {
+/*footer {
+  width: 100vw;
   background-color: rgb(126, 178, 227);
   color: rgb(220, 110, 13);
-  text-align: center;
-  padding: 20px 0;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  justify-content: space-evenly;
+  padding: 1%;
+  min-height: auto;
+  align-items: center;
+  justify-items: right;
+  align-items: center;
   font-size: 14px;
+  margin-top: auto;
 }
 
 footer a {
@@ -133,7 +138,7 @@ footer a {
 
 footer a:hover {
   text-decoration: underline;
-}
+}*/
 
 .karratua {
   background-color: rgba(219, 191, 250);
@@ -141,13 +146,12 @@ footer a:hover {
   margin: 20px auto;
   width: 80%;
   border-radius: 10px;
-  color: rgb(63, 102, 246);
-  font-size: 18px;
 }
 
 .karratua p {
   margin: 0;
-  line-height: 1.6; /* Espaciado entre líneas */
+  color: rgb(63, 102, 246);
+  font-size: 18px;
 }
 
 .gu p{
@@ -155,7 +159,7 @@ footer a:hover {
   font-size: 19%;
 }
 
-@media screen and (max-width:600px){ /*respondive egiteko*/
+@media screen and (max-width:600px){ /*responsive egiteko*/
   #logoa{
       display: none;
   }
@@ -163,6 +167,10 @@ footer a:hover {
       flex-direction: column; /*pantaila txikitzen denean, elementu guztiak zutabe moduan gertuko dira responsive hobeto ikusteko*/
   }
   nav{
+    display: flex;
+    flex-direction: column;
+  }
+  footer{
     display: flex;
     flex-direction: column;
   }

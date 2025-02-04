@@ -44,28 +44,27 @@ session_start();
         <select>
         <?php
                 //DATU BASETIK
-                $sql = "select kodBidMota from bid_mota"; 
+                $sql = "select kodBidMota, desk from bid_mota"; 
                 $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<option value='" . $row['kodBidMota'] . "'>" . $row['kodBidMota'] . "</option>";
+                        echo "<option value='" . $row['kodBidMota'] . "'>" . $row['desk'] . "</option>";
                     }
                 }
-                $conn->close();
                 ?>
         </select><br>
         <div class = "bidaiErregistratu">
             <label for = "hasieraData">Hasiera data:</label>
         </div>
-        <input type = "date" id = "hasieraData" name = "hasieraData" requiered><br>
+        <input type = "date" id = "hasieraData" name = "hasieraData"  onclick ="gaurkoData()" required><br>
         <div class = "bidaiErregistratu">
             <label for = "amaieraData">Amaiera data:</label>
         </div>
-        <input type = "date" id = "amaieraData" name = "amaieraData" requiered><br>
+        <input type = "date" id = "amaieraData" name = "amaieraData" onclick ="gaurkoData()" onchange ="egunakKalkulatu()" required><br>
         <div class = "bidaiErregistratu">
-            <label for = "egunak" id = "egunak">Egunak:</label>
+            <label for = "egunak">Egunak:</label>
         </div>
-        <input type = "text" id = "egunak" name = "egunak" requiered><br>
+        <input type = "number" id = "egunak" name = "egunak" readonly required><br>
         <div class = "bidaiErregistratu">
             <label for = "herrialdea">Herrialdea:</label>
         </div>
@@ -85,13 +84,13 @@ session_start();
         <div class = "bidaiErregistratu">
             <label for = "bidaiDeskribapena">Deskribapena:</label>
         </div>
-        <input type = "text"  id="deskribapena" name="deskribapena" rows="4" cols="50" requiered><br>
+        <input type = "text"  id="deskribapena" name="deskribapena" rows="4" cols="50" required><br>
         <div class = "bidaiErregistratu">
             <label for = "kanpokoZerbitzuak">Kanpoan geratzen diren zerbitzuak:</label>
         </div>
-        <input type = "text" id = "kanpokoZerbitzuak" name = "kanpokoZerbitzuak" requiered><br>
+        <input type = "text" id = "kanpokoZerbitzuak" name = "kanpokoZerbitzuak" required><br>
         <button type="button">GORDE</button>
-        <p id="errorMezua" style="color:white;"></p>
+
     </form>
     </div>
     <footer>
@@ -103,29 +102,37 @@ session_start();
     </footer>
     
     <script>
-    document.getElementById('bidaiakErregistratuOrria').addEventListener('submit', function(event) {
-        event.preventDefault(); 
-    
-        let hasieraData = new Date(document.getElementById('hasiera-data').value);
-        let amaieraData = new Date(document.getElementById('amaiera-data').value);
-        let errorMezua = document.getElementById('errorMezua');
-    
-        if (amaieraData <= hasieraData) {
-            errorMezua.textContent = "Amaiera data ezin da hasiera datatik beranduago izan.";
-            return; // no va a seguir para adelante
-        }
-    
-        let diffTime = amaieraData - hasieraData;
-        let diffDays = diffTime / (1000 * 3600 * 24); // milisegundos para calcular los días
-        console.log("Egun kopurua: ${diffDays} egun");
-    
-        if (diffDays > 0) {
-            alert("Datuak ondo gorde dira. Itzultzen zara menu nagusira.");
-            window.location.href = "menu_nagusia.html"; 
-        } else {
-            alert("Datuak ez dira ondo gorde. Saiatu berriro.");
-        }
-    });
+        
+    function gaurkoData(){
+    let gaur = new Date();
+    let urtea = gaur.getFullYear();
+    let hilea = String(gaur.getMonth() + 1).padStart(2, '0'); //array batean bezala 0 posiziotik hasten da beraz, +1
+    let eguna = String(gaur.getDate()).padStart(2, '0');
+    let Minimoa = `${urtea}-${hilea}-${eguna}`;
+
+    document.getElementById("hasieraData").setAttribute("min", Minimoa);
+    document.getElementById("amaieraData").setAttribute("min", Minimoa);
+            }
+
+    function egunakKalkulatu(){
+
+        let hasieraData = document.getElementById("hasieraData").value;
+        let amaieraData = document.getElementById("amaieraData").value;
+
+        if(!hasieraData || !amaieraData){
+        alert("Mesedez bete ezazu hutsune guztiak");
+        return;
+    }
+
+    let diff = new Date(amaieraData) - new Date(hasieraData);
+            if (diff < 0) {
+                alert("Errorea, amaiera data hasiera data baino handiagoa izan behar da");
+                return;
+            }
+
+            let egunak = (diff / (1000 * 3600 * 24)); //milisegunduak egunetara bihurtu
+            document.getElementById("egunak").value = egunak;
+}
     </script>
 </body>
 </html>
