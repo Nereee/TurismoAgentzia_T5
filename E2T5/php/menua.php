@@ -14,21 +14,9 @@ require 'conexion.php';
 <body>
     <nav>
         <ul>
-            <li>
-                <a href="#">
-                    <p>Hasiera</p>
-                </a>
-            </li>
-            <li>
-                <a href="../E2T5/html/gu.html">
-                    <p>Gu</p>
-                </a>
-            </li>
-            <li>
-                <a href="../E2T5/html/laguntza.html">
-                    <p>Laguntza</p>
-                </a>
-            </li>
+            <li><a href="#"><p>Hasiera</p></a></li>
+            <li><a href="../E2T5/html/gu.html"><p>Gu</p></a></li>
+            <li><a href="../E2T5/html/laguntza.html"><p>Laguntza</p></a></li>
         </ul>
     </nav>
 </body>
@@ -44,8 +32,6 @@ $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
     $user = $result->fetch_assoc();
-
-   
         header("Location: ../html/menu_nagusia.html");
         exit();
        
@@ -61,4 +47,3 @@ if ($result->num_rows > 0) {
 
 $conn->close();
 ?>
-

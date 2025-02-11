@@ -4,7 +4,7 @@
 $servername = "localhost:3307";
 $username = "root";
 $password = "";
-$dbname = "db_e2t5ii"; //datu basearen izena
+$dbname = "db_E2T5II"; //datu basearen izena
 
 // Konexioa egin
 $conn = new mysqli($servername, $username, $password, $dbname);
