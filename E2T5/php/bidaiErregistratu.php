@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
 <nav>
-        <ul>
+        <ul class = "menua">
             <li>
                 <a href="../index.html">
                 <p>Hasiera</p>
@@ -21,7 +21,7 @@ session_start();
             </li>
             <li>
                 <a href="../html/gu.html">
-                    <p>Gu</p>
+                <p>Gu &copy;</p>
                 </a>
             </li>
             <li>
@@ -35,8 +35,8 @@ session_start();
         </ul>
     </nav>   
     <div class="form-container">
-            <img src="../img/errekamari_logoa.png" alt="logo" class="logo">
-<form id = "bidaiakErregistratuOrria" action="gordeBidai.php" method="post">           
+           
+<form id = "bidaiakErregistratuOrria" action="gordeBidai.php" method="post" style = "margin-top: 190px;">           
         <div class = "bidaiErregistratu">
             <label for = "izena">Izena:</label>
         </div>
@@ -98,8 +98,7 @@ session_start();
 
     </form>
     </div>
-    <table id = "laburpenTaula">
-        <caption>Laburpen taula</caption>
+    <table id = "laburpenTaula" style = "display: none;">
         <thead>
             <tr>
                 <th>Izena</th>

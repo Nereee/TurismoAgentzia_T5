@@ -8,6 +8,14 @@ $prezioa_o = htmlspecialchars(trim($_POST['prezioaOstatu']));
 $sarrera_eguna = htmlspecialchars(trim($_POST['sarreraEguna']));
 $irteera_eguna = htmlspecialchars(trim($_POST['irteeraEguna']));
 $logela_mota = htmlspecialchars(trim($_POST['logelaMotaO']));
+
+if(!isset($_SESSION['idBid'])){
+    echo "<script>
+    alert('Mesedez lehenego bidaiaren formularion erregistratu');
+    window.location.href = 'bidaiErregistratu.php';
+  </script>";
+}
+
 $bidaia= $_SESSION['idBid'];
 
 $conn->query("INSERT INTO zerbitzuak (idBid)

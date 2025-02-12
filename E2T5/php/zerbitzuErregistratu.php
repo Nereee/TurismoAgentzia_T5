@@ -13,7 +13,7 @@ session_start();
 </head>
 <body>
 <nav>
-        <ul>
+        <ul class = "menua">
             <li>
                 <a href="../index.html">
                 <p>Hasiera</p>
@@ -21,7 +21,7 @@ session_start();
             </li>
             <li>
                 <a href="../html/gu.html">
-                    <p>Gu</p>
+                    <p>Gu &copy;</p>
                 </a>
             </li>
             <li>
@@ -35,8 +35,7 @@ session_start();
         </ul>
 </nav>  
     <div class="form-container">
-            <img src="../img/errekamari_logoa.png" alt="logo" class="logo"> 
-    <form id = "zerbitzuakErregistratuOrria" method="post" action="#">           
+    <form id = "zerbitzuakErregistratuOrria" method="post" action="#" style = "margin-top: 190px;">           
         <div class = "zerbitzuErregistratu">
             <label for = "aukera">Aukeratu bidaia:</label><br>
         </div>
@@ -64,7 +63,7 @@ session_start();
         <div id="hegaldiAukerak" style="display: none;">
             <input type="radio" id="joanRadio" name="hegaldiAukera" value="joanRadio" onclick="formularioaErakutsi()"> Joan
             <input type="radio" id="joanEtorriRadio" name="hegaldiAukera" value="joanEtorriRadio" onclick="formularioaErakutsi()"> Joan / Etorri
-        </div>
+        </div><br>
         <input type = "button" value = "MENU NAGUSIA" onclick="window.location.href='../html/menu_nagusia.html'"><br>
 
 <div id = "formHegaldiJoan" style = "display: none;">
@@ -97,7 +96,7 @@ session_start();
     <label for = "hegaldiKod">Hegaldi kodea:</label><br>
     <input type = "text" id = "hegaldiKodea" name = "hegaldiKodea" required><br>
     <label for = "airelineaJoan">Airelinea:</label><br>
-    <select id = "airelineaJ" name = "airelineaJ" rowspan>
+    <select id = "airelineaJ" name = "airelineaJ" style = "width: 250px">
         <?php
             //DATU BASETIK
             $sql = "select kodAirelinea, izena from airelineak"; 
@@ -133,7 +132,7 @@ session_start();
     <label for = "bueltaKod">Bueltako hegaldi kodea:</label><br>
     <input type = "text" id = "bueltaHKod" name = "bueltaHKod" required><br>
     <label for = "bueltaAire">Bueltako airelinea:</label><br>
-    <select id = "airelineaJE" name = "airelineaJE">
+    <select id = "airelineaJE" name = "airelineaJE" style = "width: 250px">
         <?php
             //DATU BASETIK
             $sql = "select kodAirelinea, izena from airelineak"; 
@@ -146,8 +145,8 @@ session_start();
             }
             ?>
     </select><br>
-    <input type = "button" value = "GORDE" onclick ="erakutsiTaulaHJE()">
-    <input type = "submit" value = "GORDE DB" onclick="gordeDB(event)"><br>
+    <input type = "button" value = "GORDE" onclick ="erakutsiTaulaHJE()"><br><br>
+    <input type = "submit" value = "GORDE DB" onclick="gordeDB(event)"><br><br>
     <input type = "button" value = "ATZERA" onclick="window.location.href='zerbitzuErregistratu.php'"><br>
 </div>
 
@@ -188,8 +187,8 @@ session_start();
                 $conn->close();
                 ?>
         </select><br>
-        <input type = "button" value = "GORDE" onclick ="erakutsiTaulaO()">
-        <input type = "submit" value = "GORDE DB" onclick="gordeDB(event)"><br>
+        <input type = "button" value = "GORDE" onclick ="erakutsiTaulaO()"><br><br>
+        <input type = "submit" value = "GORDE DB" onclick="gordeDB(event)"><br><br>
         <input type = "button" value = "ATZERA" onclick="window.location.href='zerbitzuErregistratu.php'"><br>
     </div>
 
@@ -210,15 +209,14 @@ session_start();
             <label for = "prezioaBesteak">Prezioa (€):</label><br>
         </div>
         <input type = "number" id = "prezioaBesteak" name = "prezioaBesteak" required><br>
-        <input type = "button" value = "GORDE" onclick ="erakutsiTaulaB()">
-        <input type = "submit" value = "GORDE DB" onclick="gordeDB(event)"><br>
+        <input type = "button" value = "GORDE" onclick ="erakutsiTaulaB()"><br><br>
+        <input type = "submit" value = "GORDE DB" onclick="gordeDB(event)"><br><br>
         <input type = "button" value = "ATZERA" onclick="window.location.href='zerbitzuErregistratu.php'"><br>
   </div>
 </form>
 <table id = "laburpenTaulaHJ" style = "display: none;">
         <thead>
             <tr>
-                <th>Zerbitzu Mota</th>
                 <th>Jatorrizko Aireportua</th>
                 <th>Helmugako Aireportua</th>
                 <th>Hegaldi Kodea</th>
@@ -236,7 +234,6 @@ session_start();
     <table id = "laburpenTaulaHJE" style = "display: none;">
         <thead>
             <tr>
-                <th>Zerbitzu Mota</th>
                 <th>Itzulera Data</th>
                 <th>Itzulera Ordua</th>
                 <th>Bueltako Bidai Iraupena</th>
@@ -251,7 +248,6 @@ session_start();
     <table id = "laburpenTaulaO" style = "display: none;">
         <thead>
             <tr>
-                <th>Zerbitzu Mota</th>
                 <th>Hotelaren Izena</th>
                 <th>Hiria</th>
                 <th>Prezioa (€)</th>
@@ -267,7 +263,6 @@ session_start();
     <table id = "laburpenTaulaB" style = "display: none;">
         <thead>
             <tr>
-                <th>Zerbitzu Mota</th>
                 <th>Izena</th>
                 <th>Data</th>
                 <th>Deskribapena</th>
@@ -339,7 +334,7 @@ function erakutsiTaulaHJ() {
     let irteeraOrduaJ=document.getElementById("irteeraOrduaJoan").value;
     let bidaiIraupenaJ=document.getElementById("bidaiIraupena").value.trim();
     
-    let table = document.querySelector("table");
+    let table = document.getElementById("laburpenTaulaHJ");
     let tbody = table.querySelector("tbody");
 
     let lerroa = document.createElement("tr");
@@ -347,6 +342,10 @@ function erakutsiTaulaHJ() {
         let jatorrizkoAireportuaGelaxka = document.createElement('td');
         jatorrizkoAireportuaGelaxka.textContent = jatorrizkoAireportua;
         lerroa.appendChild(jatorrizkoAireportuaGelaxka);
+
+        let helmugakoAireportuaGelaxka = document.createElement('td');
+        helmugakoAireportuaGelaxka.textContent = helmugakoAireportua;
+        lerroa.appendChild(helmugakoAireportuaGelaxka);
 
         let hegaldiKodeaGelaxka = document.createElement('td');
         hegaldiKodeaGelaxka.textContent = hegaldiKodea;
@@ -384,35 +383,35 @@ function erakutsiTaulaHJE() {
     let bueltakoKodea=document.getElementById("bueltaHKod").value.trim();
     let bueltakoAirelinea=document.getElementById("airelineaJE").value;
     
-   let table = document.querySelector("table");
-            let tbody = table.querySelector("tbody");
+   let table = document.getElementById("laburpenTaulaHJE");
+    let tbody = table.querySelector("tbody");
 
-            let lerroa = document.createElement("tr");
+    let lerroa = document.createElement("tr");
 
-            let itzuleraDataGelaxka = document.createElement('td');
-            itzuleraDataGelaxka.textContent = itzuleraData;
-            lerroa.appendChild(itzuleraDataGelaxka);
+    let itzuleraDataGelaxka = document.createElement('td');
+    itzuleraDataGelaxka.textContent = itzuleraData;
+    lerroa.appendChild(itzuleraDataGelaxka);
 
-            let itzuleraOrduaGelaxka = document.createElement('td');
-            itzuleraOrduaGelaxka.textContent = itzuleraOrdua;
-            lerroa.appendChild(itzuleraOrduaGelaxka);
+    let itzuleraOrduaGelaxka = document.createElement('td');
+    itzuleraOrduaGelaxka.textContent = itzuleraOrdua;
+    lerroa.appendChild(itzuleraOrduaGelaxka);
 
-            let bueltakoIraupenaGelaxka = document.createElement('td');
-            bueltakoIraupenaGelaxka.textContent = bueltakoIraupena;
-            lerroa.appendChild(bueltakoIraupenaGelaxka);
+    let bueltakoIraupenaGelaxka = document.createElement('td');
+    bueltakoIraupenaGelaxka.textContent = bueltakoIraupena;
+    lerroa.appendChild(bueltakoIraupenaGelaxka);
 
-            let bueltakoKodeaGelaxka = document.createElement('td');
-            bueltakoKodeaGelaxka.textContent = bueltakoKodea;
-            lerroa.appendChild(bueltakoKodeaGelaxka);
+    let bueltakoKodeaGelaxka = document.createElement('td');
+    bueltakoKodeaGelaxka.textContent = bueltakoKodea;
+    lerroa.appendChild(bueltakoKodeaGelaxka);
 
-            let bueltakoAirelineaJGelaxka = document.createElement('td');
-            bueltakoAirelineaGelaxka.textContent = bueltakoAirelinea;
-            lerroa.appendChild(bueltakoAirelineaGelaxka);
+    let bueltakoAirelineaGelaxka = document.createElement('td');
+    bueltakoAirelineaGelaxka.textContent = bueltakoAirelinea;
+    lerroa.appendChild(bueltakoAirelineaGelaxka);
 
-            tbody.appendChild(lerroa);
+    tbody.appendChild(lerroa);
 
-            table.style.display = "table";
-        }
+    table.style.display = "table";
+    }
 
 function erakutsiTaulaO() {
     let hotelarenIzena=document.getElementById("hotelarenIzena").value;
@@ -422,7 +421,7 @@ function erakutsiTaulaO() {
     let irteeraEguna=document.getElementById("irteeraEguna").value;
     let logelaMotaO=document.getElementById("logelaMotaO").value;
     
-   let table = document.querySelector("table");
+   let table = document.getElementById("laburpenTaulaO");
             let tbody = table.querySelector("tbody");
 
             let lerroa = document.createElement("tr");
@@ -462,7 +461,7 @@ function erakutsiTaulaO() {
     let deskribapenaB=document.getElementById("deskribapenaB").value.trim(); //trim ezabatzen ditu testu bateko espazio zuriak
     let prezioaB=document.getElementById("prezioaBesteak").value;
     
-   let table = document.querySelector("table");
+   let table = document.getElementById("laburpenTaulaB");
             let tbody = table.querySelector("tbody");
 
             let lerroa = document.createElement("tr");

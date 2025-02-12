@@ -10,6 +10,14 @@ $prezio_joan = htmlspecialchars(trim($_POST['prezioaJoan']));
 $irteera_data = $_POST['irteeraDataJoan'];
 $irteera_ordua = $_POST['irteeraOrduaJoan'];
 $bidai_iraupen = htmlspecialchars(trim($_POST['bidaiIraupena']));
+
+if(!isset($_SESSION['idBid'])){
+    echo "<script>
+    alert('Mesedez lehenego bidaiaren formularion erregistratu');
+    window.location.href = 'bidaiErregistratu.php';
+  </script>";
+}
+
 $bidaia= $_SESSION['idBid'];
 
 $conn->query("INSERT INTO zerbitzuak (idBid)

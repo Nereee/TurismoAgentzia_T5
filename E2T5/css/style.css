@@ -58,8 +58,10 @@ nav ul li a:hover { /*cuando el cursor este encima */
   text-align: center;
 }
 
-.logo {
+#logo {
+  display: flex;
   width: 300px; 
+  margin-top: 150px;
   margin-bottom: 2px; 
 }
 
@@ -103,6 +105,7 @@ display: inline-block;
   border-radius: 10px;
   border:2px blue solid;
   margin: 20px;
+  justify-content: center;
 }
 
 #laburpenTaulaHJ{
@@ -188,33 +191,18 @@ button:hover {
 }
 
 @media (max-width: 600px) {
-nav{
-  display: flex;
+.menua{
   flex-direction: column;
 }
-.logo{
-  display: flex;
-  flex-direction: column;
-}
-.form-container{
-  display: flex;
-  flex-direction: column;
-}
-main{
-  display: flex;
-  flex-direction: column;
-}
-.gu{
-  display: flex;
-  flex-direction: column;
+#logo{
+  display: none;
 }
 .karratua{
   display: flex;
   flex-direction: column;
 }
-input{
-  display: flex;
-  flex-direction: column;
+.form-container{
+  min-width: 350px;
+  justify-content: center;
 }
-
 }

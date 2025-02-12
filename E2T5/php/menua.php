@@ -13,9 +13,9 @@ require 'conexion.php';
 </head>
 <body>
     <nav>
-        <ul>
+    <ul class = "menua">
             <li><a href="#"><p>Hasiera</p></a></li>
-            <li><a href="../E2T5/html/gu.html"><p>Gu</p></a></li>
+            <li><a href="../E2T5/html/gu.html"><p>Gu &copy;</p></a></li>
             <li><a href="../E2T5/html/laguntza.html"><p>Laguntza</p></a></li>
         </ul>
     </nav>
